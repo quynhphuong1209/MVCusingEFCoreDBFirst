@@ -1,0 +1,124 @@
+﻿@model MVCusingEFCoreDBFirst.Models.NewsType
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+@* <h1>Create</h1>
+
+<h4>NewsType</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sort" class="control-label"></label>
+                <input asp-for="Sort" class="form-control" />
+                <span asp-validation-for="Sort" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsShow" class="control-label"></label>
+                <input asp-for="IsShow" class="form-control" />
+                <span asp-validation-for="IsShow" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsDeleted" class="control-label"></label>
+                <input asp-for="IsDeleted" class="form-control" />
+                <span asp-validation-for="IsDeleted" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+ *@
+ <style>
+	 .form-group {
+		 margin-left: 20px;   
+		 margin-right:20px;
+		 margin-top: 20px;
+	 }
+
+ </style>
+
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid" style="margin-top:-30px">
+	<div class="row">
+		<div class="col-md-12">
+
+			<!--begin::Portlet-->
+			<div class="kt-portlet">
+				<div class="kt-portlet__head">
+					<div class="kt-portlet__head-label">
+						<h3 class="kt-portlet__head-title">
+							Thêm thể loại tin tức 
+						</h3>
+					</div>
+				</div>
+
+				<!--begin::Form-->
+				<form asp-action="Create" >
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<div class="form-group">
+						<label asp-for="Name" class="control-label">Tên loại</label>
+						<input asp-for="Name" class="form-control" />
+						<span asp-validation-for="Name" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Description" class="control-label">Mô tả</label>
+						<input asp-for="Description" class="form-control" />
+						<span asp-validation-for="Description" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Sort" class="control-label">Sắp xếp</label>
+						<input asp-for="Sort" class="form-control" />
+						<span asp-validation-for="Sort" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="DateCreated" class="control-label">Ngày tạo</label>
+						<input asp-for="DateCreated" class="form-control" />
+						<span asp-validation-for="DateCreated" class="text-danger"></span>
+					</div>
+					@* <div class="form-group">
+						<label asp-for="IsShow" class="control-label"></label>
+						<input asp-for="IsShow" class="form-control" />
+						<span asp-validation-for="IsShow" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="IsDeleted" class="control-label"></label>
+						<input asp-for="IsDeleted" class="form-control" />
+						<span asp-validation-for="IsDeleted" class="text-danger"></span>
+					</div> *@
+					<div class="form-group">
+						<input type="submit" value="Create" class="btn btn-primary" />
+					</div>
+				</form>
+		    <!--end::Form-->
+			</div>
+			 
+			
+		
+		</div>
+	</div>
+</div>

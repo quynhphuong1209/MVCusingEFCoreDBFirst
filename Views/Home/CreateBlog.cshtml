@@ -1,0 +1,150 @@
+﻿@model MVCusingEFCoreDBFirst.Models.Blog
+@{
+    ViewData["Title"] = "Tạo mới bài viết";
+}
+@* <h1>Tạo mới bài viết</h1>
+<hr /> *@
+
+<style>
+    .form-group {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 20px;
+    }
+</style>
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid" style="margin-top:-30px">
+    <div class="row">
+        <div class="col-md-12">
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Tạo mới bài viết
+                        </h3>
+                    </div>
+                </div>
+
+                <!--begin::Form-->
+                <form asp-action="CreateBlog">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Picture" class="control-label"></label>
+                        <input asp-for="Picture" class="form-control" />
+                        <div>
+                            <img src="" id="PictureView" width="100" />
+                        </div>
+                        <button type="button" id="btnBrowse">Chọn ảnh</button>
+                        <span asp-validation-for="Picture" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-primary" />
+                    </div>
+                </form>
+
+                <form enctype="multipart/form-data" onsubmit="AJAXSubmit(this);return false;"
+                      method="post">
+                    <dl>
+                        <dt>
+                            <label for="FileUpload_FormFile">File</label>
+                        </dt>
+                        <dd>
+                            <input id="FileUpload_FormFile" type="file"
+                                   name="FileUpload.FormFile" />
+
+                        </dd>
+                    </dl>
+
+                    <input class="btn" type="submit" value="Upload" />
+
+                    <div style="margin-top:15px">
+                        <output name="result"></output>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function AJAXSubmit(oFormElement) {
+        var resultElement = oFormElement.elements.namedItem("result");
+        const formData = new FormData(oFormElement);
+
+        try {
+            const response = await fetch(oFormElement.action, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                window.location.href = '/';
+            }
+
+            resultElement.value = 'Result: ' + response.status + ' ' +
+                response.statusText;
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+</script>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Quay lại</a>
+</div>
+
+<link rel="stylesheet" href="~/lib/jqueryui/jqueryui/themes/base/theme.css" />
+<link rel="stylesheet" href="~/lib/jqueryui/jqueryui/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="~/elfinder/elfinder/css/elfinder.full.css" />
+<link rel="stylesheet" href="~/elfinder/elfinder/css/theme.css/theme.min.css" />
+<link rel="stylesheet" href="~/elfinder-material-theme/Material/css/theme-gray.css" />
+
+@section Scripts {
+    <script type="text/javascript" src="~/lib/jqueryui/jqueryui/jquery-ui.js"></script>
+    <script src="~/elfinder/js/elfinder.min.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if ($('#btnBrowse') != undefined) {
+                $('#btnBrowse').click(function () {
+                    var fm = $('<div id="elfinder" />').dialogelfinder({
+                        url: '/quan-ly-tep-tin/connector',
+                        baseUrl: "/elfinder/",
+                        width: 840,
+                        height: 450,
+                        destroyOnClose: true,
+                        title: 'Quản lý tệp tin',
+                        getFileCallback: function (files, fm) {
+                            $('#Picture').val('/' + files[0].path);
+                            $('#PictureView').attr('src', '/' + files[0].path);
+                        },
+                        commandsOptions: {
+                            getfile: {
+                                multiple: true,
+                                oncomplete: 'close',
+                                folders: false
+                            }
+                        }
+                    }).dialogelfinder('instance');
+                })
+            }
+        });
+        CKEDITOR.replace('Description');
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

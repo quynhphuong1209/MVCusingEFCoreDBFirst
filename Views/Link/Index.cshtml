@@ -1,0 +1,128 @@
+﻿@model IEnumerable<MVCusingEFCoreDBFirst.Models.Links>
+<!-- Kết thúc-->
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            LinkID
+        </th>
+        <th>
+            LinkName
+        </th>
+        <th>
+            LinkDescription
+        </th>
+        <th>
+            LinkURL
+        </th>
+        <th>
+            CategoryName
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkURL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.LinkID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.LinkID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.LinkID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<!-- Thêm mã phân trang -->
+<br />
+<ul class="pagination">
+    @{
+        int numberPage = ViewBag.numberPage;
+        int pageCurrent = ViewBag.pageCurrent;
+        int offset = 2;//number display page
+
+
+        //config FirstLink
+        if (pageCurrent > 1)
+        {
+            int prevPage = pageCurrent - 1;
+            var PrevLink = new Dictionary<string, string> { { "page", prevPage.ToString() } };
+            <li><a asp-controller="News" asp-action="Index" asp-all-route-data="PrevLink">Prev Link</a></li>
+        }
+
+        int from = pageCurrent - offset;
+        int to = pageCurrent + offset;
+        if (from <= 0)
+        {
+            from = 1;
+            to = offset * 2;
+        }
+
+
+        if (to > numberPage)
+        {
+            to = numberPage;
+        }
+
+        int i;
+        for (i = from; i <= to; i++)
+        {
+            var parms = new Dictionary<string, string>
+    {
+    { "page",i.ToString()}
+    };
+            if (pageCurrent == i)
+            {
+                <li class="active"><a asp-controller="News" asp-action="Index" asp-all-route-data="parms">@i</a></li>
+            }
+            else
+            {
+                <li><a asp-controller="News" asp-action="Index" asp-all-route-data="parms">@i</a></li>
+            }
+
+        }
+
+        if (pageCurrent < numberPage - (to / 2))
+        {
+            <li><a>...</a></li>
+            var LastLink = new Dictionary<string, string> { { "page", numberPage.ToString() } };
+            <li><a asp-controller="News" asp-action="Index" asp-all-route-data="LastLink">Last Link</a></li>
+        }
+
+        if (pageCurrent < numberPage)
+        {
+            int nextPage = pageCurrent + 1;
+            var NextLink = new Dictionary<string, string> { { "page", nextPage.ToString() } };
+            <li><a asp-controller="News" asp-action="Index" asp-all-route-data="NextLink">Next Link</a></li>
+        }
+    }
+</ul>
+
+
+@* @Html.PagedListPager(Model, page => Url.Action("Index",new { page })) *@

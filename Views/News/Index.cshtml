@@ -1,0 +1,146 @@
+﻿@model IEnumerable<MVCusingEFCoreDBFirst.Models.News>
+@{
+    ViewData["Title"] = "Index";
+}
+ 
+
+<div class="kt-portlet" style="margin-top:-30px">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+                Danh sách tin tức
+            </h3>
+        </div>
+        <div class="kt-portlet__head-label">
+            <div class="kt-portlet__head-title">
+                @* <form asp-action="Create">
+                    <button type="submit" class="btn btn-primary">Thêm mới</button>
+                </form> *@
+                <a asp-action="Create">Thêm mới</a>
+                @* <button type="button" class="btn btn-primary btn-sm"<a asp-action="Create">Create New</a>>Thêm mới</button> *@
+            </div>
+
+        </div>
+    </div>
+    <div class="kt-portlet__body">
+
+    <!--begin::Section-->
+
+        <div class="kt-section__content">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Hình ảnh</th>
+                        <th>Tiêu đề</th>
+                        <th>Ngày tạo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int j = 1;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@j</th>
+                            <td><img src="/Upload/Images/@item.ImageUrl"  width="100px"/></td>
+                            <td>@item.Title</td>
+                            <td>@(item.Date.HasValue?item.Date.Value.ToString("dd/MM/yyyy hh:mm"):"")</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id"><i class="flaticon-edit"></i></a> &nbsp;
+                                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="flaticon-delete"></i></a>
+                            </td>
+                        </tr>
+                        j++;
+                    }
+                </tbody>
+            </table>
+
+            </div>
+
+     
+
+    <!--end::Section-->
+<div class="" style="margin-left:20px">
+        <ul class="pagination justify-content-end mr-4">
+            @{
+                int numberPage = ViewBag.numberPage;
+                int pageCurrent = ViewBag.pageCurrent;
+                int offset = 2;//number display page
+
+
+                //config FirstLink
+                if (pageCurrent > 1)
+                {
+                    int prevPage = pageCurrent - 1;
+                    var PrevLink = new Dictionary<string, string> { { "page", prevPage.ToString() } };
+                    <li class="page-item active"><a class="page-link" asp-controller="News" asp-action="Index" asp-all-route-data="PrevLink">Trang trước</a></li>
+                }
+                else
+                {
+
+                    int prevPage = pageCurrent - 1;
+                    var PrevLink = new Dictionary<string, string> { { "page", prevPage.ToString() } };
+                    <li class="page-item disabled"><a class="page-link" asp-controller="News" asp-action="Index" asp-all-route-data="PrevLink">Trang trước</a></li>
+                }
+
+                int from = pageCurrent - offset;
+                int to = pageCurrent + offset;
+                if (from <= 0)
+                {
+                    from = 1;
+                    to = offset * 2;
+                }
+
+
+                if (to > numberPage)
+                {
+                    to = numberPage;
+                }
+
+                int i;
+                for (i = from; i <= to; i++)
+                {
+                    var parms = new Dictionary<string, string>
+            {
+            { "page",i.ToString()}
+            };
+                    if (pageCurrent == i)
+                    {
+                        <li class="page-item active"><a class="page-link" asp-controller="News" asp-action="Index" asp-all-route-data="parms">@i</a></li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" asp-controller="News" asp-action="Index" asp-all-route-data="parms">@i</a></li>
+                    }
+
+                }
+
+                // if (pageCurrent < numberPage - (to / 2))
+                // {
+                //     <li><a>...</a></li>
+                //     var LastLink = new Dictionary<string, string> { { "page", numberPage.ToString() } };
+                //     <li class="page-item"><a class="page-link" asp-controller="News" asp-action="Index" asp-all-route-data="LastLink">Trang cuối</a></li>
+                // }
+
+                if (pageCurrent < numberPage)
+                {
+                    int nextPage = pageCurrent + 1;
+                    var NextLink = new Dictionary<string, string> { { "page", nextPage.ToString() } };
+                    <li class="page-item active"><a class="page-link" asp-controller="News" asp-action="Index" asp-all-route-data="NextLink">Trang sau</a></li>
+                }
+                else 
+                {
+                    int nextPage = pageCurrent + 1;
+                    var NextLink = new Dictionary<string, string> { { "page", nextPage.ToString() } };
+                    <li class="page-item disabled"><a class="page-link" asp-controller="News" asp-action="Index" asp-all-route-data="NextLink">Trang sau</a></li>
+                }
+            }
+        </ul>
+        </div>
+    </div>
+</div>
+    </div>
+<!--end::Form-->
+</div>

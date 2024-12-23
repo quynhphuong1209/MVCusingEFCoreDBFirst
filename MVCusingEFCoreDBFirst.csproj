@@ -1,0 +1,157 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="elFinder.NetCore" Version="1.4.0" />
+    <PackageReference Include="LigerShark.WebOptimizer.Core" Version="3.0.426" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.4" />
+    <PackageReference Include="PagedList" Version="1.17.0" />
+    <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="10.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Upload\Images\" />
+    <Folder Include="wwwroot\assets\plugins\general\ion-rangeslider\img\" />
+    <Folder Include="wwwroot\file\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\elfinder\elfinder-material-theme\LICENSE" />
+    <None Include="wwwroot\elfinder\elfinder-material-theme\Material\icons\material.svg" />
+    <None Include="wwwroot\elfinder\elfinder-material-theme\Material\icons\material.woff2" />
+    <None Include="wwwroot\elfinder\elfinder-material-theme\Material\images\icons-big.svg" />
+    <None Include="wwwroot\elfinder\elfinder-material-theme\Material\images\icons-small.svg" />
+    <None Include="wwwroot\elfinder\elfinder-material-theme\Material\images\loading.svg" />
+    <None Include="wwwroot\elfinder\elfinder-material-theme\README.md" />
+    <None Include="wwwroot\elfinder\elfinder\img\icons-big.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\tui-icon-a.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\tui-icon-b.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\tui-icon-c.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\tui-icon-d.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\volume_icon_box.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\volume_icon_dropbox.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\volume_icon_ftp.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\volume_icon_googledrive.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\volume_icon_local.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\volume_icon_network.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\volume_icon_onedrive.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\volume_icon_sql.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\volume_icon_trash.svg" />
+    <None Include="wwwroot\elfinder\elfinder\img\volume_icon_zip.svg" />
+    <None Include="wwwroot\elfinder\elfinder\js\elfinder.full.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\elfinder.full.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\elfinder.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\extras\editors.default.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\extras\editors.default.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\extras\quicklook.googledocs.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\extras\quicklook.googledocs.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ar.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ar.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.bg.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.bg.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ca.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ca.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.cs.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.cs.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.da.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.da.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.de.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.de.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.el.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.el.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.es.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.es.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.fa.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.fa.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.fallback.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.fallback.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.fo.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.fo.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.fr.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.fr.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.fr_CA.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.fr_CA.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.he.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.he.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.hr.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.hr.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.hu.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.hu.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.id.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.id.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.it.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.it.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ja.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ja.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ko.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ko.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.LANG.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.LANG.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.nl.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.nl.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.no.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.no.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.pl.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.pl.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.pt_BR.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.pt_BR.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ro.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ro.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ru.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ru.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.si.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.si.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.sk.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.sk.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.sl.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.sl.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.sr.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.sr.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.sv.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.sv.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.tr.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.tr.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ug_CN.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.ug_CN.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.uk.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.uk.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.vi.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.vi.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.zh_CN.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.zh_CN.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.zh_TW.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\elfinder.zh_TW.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\help\cs.html.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\help\de.html.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\help\en.html.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\help\es.html.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\help\ja.html.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\help\ko.html.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\help\pl.html.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\help\ru.html.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\help\sk.html.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\i18n\help\tr.html.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\proxy\elFinderSupportVer1.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\proxy\elFinderSupportVer1.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\worker\calcfilehash.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\worker\calcfilehash.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\worker\quicklook.tiff.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\worker\quicklook.tiff.min.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\worker\quicklook.unzip.js" />
+    <None Include="wwwroot\elfinder\elfinder\js\worker\quicklook.unzip.min.js" />
+  </ItemGroup>
+
+</Project>

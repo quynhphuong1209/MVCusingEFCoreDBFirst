@@ -1,0 +1,256 @@
+﻿@model IEnumerable<MVCusingEFCoreDBFirst.Models.NewsType>
+@using PagedList.Mvc;
+@{
+    ViewData["Title"] = "Index";
+}
+
+@* <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="btnCreate">
+    Create New
+</button>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sort)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsShow)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sort)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsShow)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <button type="button" class="btn btn-primary btnEdit" data-id="@item.Id">
+                       Edit
+                    </button> |
+
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="modal fade" id="myNewsTypes">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Create NewsType</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="btnSave">Save</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#btnCreate").click(function () {
+            $.get("@Url.Action("CCCC", "NewsTypes")",
+                function (data) { $('.modal-body').html(data); })
+            $("#myNewsTypes").modal('show');
+        });
+
+        $(".btnEdit").click(function () {
+            var id1 = $(this).data("id");
+            $.get("@Url.Action("CCCC", "NewsTypes")?id="+id1,
+                function (data) { $('.modal-body').html(data); })
+                $("#myNewsTypes").modal('show');
+        });
+
+        $("#btnSave").click(function () {
+            var form = $('#frmNewsType');
+            //var token = $('input[name="__RequestVerificationToken"]', form).val();
+            $.post("@Url.Action("Edit", "NewsTypes")", form.serialize())
+        });
+    });
+</script> *@
+
+
+<div class="kt-portlet" style="margin-top:-30px">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+                Danh sách tin tức
+            </h3>
+        </div>
+        <div class="kt-portlet__head-label">
+            <div class="kt-portlet__head-title">
+                <a asp-action="Create">Thêm mới</a>
+                @* <button type="button" class="btn btn-primary btn-sm">Thêm mới</button> *@
+            </div>
+
+        </div>
+    </div>
+    <div class="kt-portlet__body">
+
+        <!--begin::Section-->
+        
+            <div class="kt-section__content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên loại</th>
+                            <th>Mô tả</th>
+                            <th>Ngày tạo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int j = 1;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@j</th>
+                                <td>@item.Name</td>
+                                <td>@item.Description</td>
+                                <td>@item.DateCreated</td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="flaticon-edit"></i></a> &nbsp;
+                                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="flaticon-delete"></i></a>
+                                </td>
+                            </tr>
+                            j++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+        <!--end::Section-->
+        <div class="" style="margin-left:20px">
+            <ul class="pagination justify-content-end mr-4">
+                @{
+                    int numberPage = ViewBag.numberPage;
+                    int pageCurrent = ViewBag.pageCurrent;
+                    int offset = 2;//number display page
+
+
+                    //config FirstLink
+                    if (pageCurrent > 1)
+                    {
+                        int prevPage = pageCurrent - 1;
+                        var PrevLink = new Dictionary<string, string> { { "page", prevPage.ToString() } };
+                        <li class="page-item active"><a class="page-link" asp-controller="NewsTypes" asp-action="Index" asp-all-route-data="PrevLink">Trang trước</a></li>
+                    }
+                    else
+                    {
+
+                        int prevPage = pageCurrent - 1;
+                        var PrevLink = new Dictionary<string, string> { { "page", prevPage.ToString() } };
+                        <li class="page-item disabled"><a class="page-link" asp-controller="NewsTypes" asp-action="Index" asp-all-route-data="PrevLink">Trang trước</a></li>
+                    }
+
+                    int from = pageCurrent - offset;
+                    int to = pageCurrent + offset;
+                    if (from <= 0)
+                    {
+                        from = 1;
+                        to = offset * 2;
+                    }
+
+
+                    if (to > numberPage)
+                    {
+                        to = numberPage;
+                    }
+
+                    int i;
+                    for (i = from; i <= to; i++)
+                    {
+                        var parms = new Dictionary<string, string>
+                {
+                { "page",i.ToString()}
+                };
+                        if (pageCurrent == i)
+                        {
+                            <li class="page-item active"><a class="page-link" asp-controller="NewsTypes" asp-action="Index" asp-all-route-data="parms">@i</a></li>
+                        }
+                        else
+                        {
+                            <li class="page-item"><a class="page-link" asp-controller="NewsTypes" asp-action="Index" asp-all-route-data="parms">@i</a></li>
+                        }
+
+                    }
+
+                    // if (pageCurrent < numberPage - (to / 2))
+                    // {
+                    //     <li><a>...</a></li>
+                    //     var LastLink = new Dictionary<string, string> { { "page", numberPage.ToString() } };
+                    //     <li class="page-item"><a class="page-link" asp-controller="News" asp-action="Index" asp-all-route-data="LastLink">Trang cuối</a></li>
+                    // }
+
+                    if (pageCurrent < numberPage)
+                    {
+                        int nextPage = pageCurrent + 1;
+                        var NextLink = new Dictionary<string, string> { { "page", nextPage.ToString() } };
+                        <li class="page-item active"><a class="page-link" asp-controller="NewsTypes" asp-action="Index" asp-all-route-data="NextLink">Trang sau</a></li>
+                    }
+                    else
+                    {
+                        int nextPage = pageCurrent + 1;
+                        var NextLink = new Dictionary<string, string> { { "page", nextPage.ToString() } };
+                        <li class="page-item disabled"><a class="page-link" asp-controller="NewsTypes" asp-action="Index" asp-all-route-data="NextLink">Trang sau</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+        
+    </div>
+
+    <!--end::Form-->
+</div>

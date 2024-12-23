@@ -1,0 +1,10 @@
+﻿@model Blog;
+<h1>Thông tin bài viết</h1>
+<p>Mã số: @Model.BlogId</p>
+<p>Tiêu đề: @Model.Title</p>
+<p>Ngày tạo: @Model.CreateDate.ToString("dd/MM/yyyy hh:mm:ss tt")</p>
+<p>Ảnh <img src="@Model.Picture" width="200" /></p>
+<p>Nội dung</p>
+<div>
+    @Html.Raw(Model.Description)
+</div>

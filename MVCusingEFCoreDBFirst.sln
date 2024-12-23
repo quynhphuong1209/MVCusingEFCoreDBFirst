@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34916.146
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCusingEFCoreDBFirst", "MVCusingEFCoreDBFirst.csproj", "{4C8AB48C-8CD2-4913-87D2-C0C8AA5E9322}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationFront_End", "..\WebApplicationFront_End\WebApplicationFront_End.csproj", "{E1682562-15EF-4298-A9FF-7B98EA0D5BA9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C8AB48C-8CD2-4913-87D2-C0C8AA5E9322}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C8AB48C-8CD2-4913-87D2-C0C8AA5E9322}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C8AB48C-8CD2-4913-87D2-C0C8AA5E9322}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C8AB48C-8CD2-4913-87D2-C0C8AA5E9322}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1682562-15EF-4298-A9FF-7B98EA0D5BA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1682562-15EF-4298-A9FF-7B98EA0D5BA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1682562-15EF-4298-A9FF-7B98EA0D5BA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1682562-15EF-4298-A9FF-7B98EA0D5BA9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {942DF228-47B7-44BA-B345-4AE66B7ED030}
+	EndGlobalSection
+EndGlobal
